@@ -85,7 +85,7 @@ function build(inp) {
   const rowsPerWeek = new Map(); A.forEach((v) => { const d = parseSheetDate((v || [])[0]); if (!d) return; const w = monday(d); rowsPerWeek.set(w, (rowsPerWeek.get(w) || 0) + 1); });
   const cro_weekly = phRows(inp.phWeekly).map((r) => { const w = String(r.week_start).slice(0, 10), s = rowsPerWeek.get(w) || 0, t = Number(r.tracked_submissions) || 0; return {week: w, sheet_applications: s, tracked_submissions: t, tracked_share: s ? t / s : null}; }).filter((r) => r.week >= '2026-10-05');
   const f = phRows(inp.phNewform)[0] || {};
-  const form_funnel = [['Clicked Apply in 1 min', f.clicked_apply_in_1_min], ['Opened the new form', f.opened_new_form], ['Pressed Continue', f.pressed_continue], ['Picked a role', f.picked_role], ['Chose a CV file', f.chose_cv], ['Submitted (clicked Apply now after the CV)', Math.max(f.clicked_apply_after_cv || 0, f.new_form_tracked_submits || 0)]].map(([step, people]) => ({step, people: Number(people) || 0}));
+  const form_funnel = [['Clicked Apply in 1 min', f.clicked_apply_in_1_min], ['Opened the new form', f.opened_new_form], ['Pressed Continue', f.pressed_continue], ['Picked a role', f.picked_role], ['Chose a CV file', f.chose_cv], ['Submitted on the new form (any entry)', Math.max(f.clicked_apply_after_cv || 0, f.new_form_tracked_submits || 0)], ['– of which via Apply in 1 min', f.submitted_via_sticky], ['– of which via another entry', Math.max(0, (f.clicked_apply_after_cv || 0) - (f.submitted_via_sticky || 0))]].map(([step, people]) => ({step, people: Number(people) || 0}));
   return {asof: new Date().toISOString(), kpis, stages, weekly, sources, pillars, cro_periods, cro_weekly, form_funnel};
 }
 module.exports = {build};

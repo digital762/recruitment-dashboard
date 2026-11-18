@@ -102,7 +102,7 @@ footer{margin-top:24px;font-size:12px;color:var(--muted)}
       <p class="note">PostHog submissions = the lead event, plus (on the new form) anyone who clicked Apply now after choosing a CV file. Red means under 75% of the sheet.</p></div>
     <div><h3>New form: how far people get (since 4 Nov)</h3>
       <div class="chart" id="chart-funnel"></div>
-      <p class="note">The new form sends no submit event yet, so a submission here is anyone who clicked the final Apply now after choosing a CV file.</p></div>
+      <p class="note">The new form sends no submit event yet, so a submission here is anyone who clicked the final Apply now after choosing a CV file. Not every submission starts from Apply in 1 min: some people reach the new form another way that PostHog does not record as a form opening.</p></div>
   </div>
 
   <details><summary>How these numbers are counted</summary><ul>
@@ -152,7 +152,7 @@ function hbars(box, rows, opts) {
   const rowH = 40, H = rows.length * rowH + 6, base = rows[0] ? rows[0].people : 0, max = d3.max(rows, (r) => r.people) || 1, x = d3.scaleLinear().domain([0, max]).range([0, W - 110]); svg.attr('viewBox', `0 0 ${W} ${H}`);
   rows.forEach((r, i) => { const yy = i * rowH, last = i === rows.length - 1;
     svg.append('text').attr('x', 0).attr('y', yy + 12).attr('font-size', 12).attr('fill', C.fg).text(r.step);
-    svg.append('rect').attr('x', 0).attr('y', yy + 17).attr('height', 16).attr('rx', 2).attr('width', Math.max(2, x(r.people))).attr('fill', last ? C.green : C.slate)
+    svg.append('rect').attr('x', 0).attr('y', yy + 17).attr('height', 16).attr('rx', 2).attr('width', Math.max(2, x(r.people))).attr('fill', i >= 5 ? C.green : C.slate)
       .on('mousemove', (ev) => t.show(ev, [r.step, int(r.people) + ' people', base ? Math.round(r.people / base * 100) + '% of those who clicked' : ''])).on('mouseleave', t.hide);
     svg.append('text').attr('x', Math.max(2, x(r.people)) + 6).attr('y', yy + 30).attr('font-size', 12).attr('fill', C.fg).text(int(r.people) + (base && i ? '  (' + Math.round(r.people / base * 100) + '%)' : '')); });
 }
