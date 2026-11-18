@@ -1,5 +1,5 @@
 {
- "asof": "2026-11-18T11:47:49.074Z",
+ "asof": "2026-11-18T12:17:08.304Z",
  "kpis": {
   "applications": 1870,
   "qualified_plus": 245,
@@ -430,35 +430,37 @@
  "form_funnel": [
   {
    "step": "Clicked Apply in 1 min",
-   "people": 223
+   "people": 224
   },
   {
    "step": "Opened the new form",
-   "people": 227
+   "people": 224
   },
   {
    "step": "Pressed Continue",
-   "people": 216
+   "people": 171
   },
   {
    "step": "Picked a role",
-   "people": 199
+   "people": 165
   },
   {
    "step": "Chose a CV file",
-   "people": 151
+   "people": 115
   },
   {
-   "step": "Submitted on the new form (any entry)",
-   "people": 139
+   "step": "Submitted (clicked Apply now after the CV)",
+   "people": 106
   },
   {
-   "step": "– of which via Apply in 1 min",
-   "people": 105
+   "step": "Old form: submissions PostHog recorded",
+   "people": 158,
+   "group": "old"
   },
   {
-   "step": "– of which via another entry",
-   "people": 34
+   "step": "Old form: landed directly on the form (Ready for your next move)",
+   "people": 34,
+   "group": "old"
   }
  ]
 }
