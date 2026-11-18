@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>betterhomes Recruitment Campaign – Progress Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<style>
+:root{--slate:#1F343F;--sand:#D9B9A0;--powder:#7BA0B2;--green:#2E8B57;--bg:#FAFAFA;--card:#FFFFFF;--fg:#1F343F;--muted:#586E78;--line:#DADADA;--grey:#C9CFD3;--bad:#C0392F;
+  --serif:"IvyMode","Cormorant Garamond",Georgia,serif;--sans:"Poppins","IvyStyle Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1200px;margin:0 auto;padding:28px 24px 64px}
+.hero{background:var(--slate);color:#fff;border-radius:16px;padding:32px 36px 30px;margin-bottom:24px}
+.hero .rule{width:48px;height:2px;background:var(--sand);margin-bottom:16px}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.6vw,44px);line-height:1.1;margin:0 0 14px;max-width:24ch}
+.hero p{margin:0;font-size:15px;line-height:1.6;max-width:72ch;opacity:.92}
+.hero b{color:var(--sand);font-weight:600}
+.hero .asof{margin-top:14px;font-size:12px;opacity:.7}
+h2{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.2;margin:48px 0 6px}
+h2::after{content:'';display:block;width:44px;height:2px;background:var(--sand);margin-top:10px}
+h3{font-family:var(--serif);font-weight:400;font-size:21px;margin:28px 0 6px}
+.sub{color:var(--muted);margin:0 0 14px;max-width:72ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 2px 8px rgba(31,52,64,.05)}
+.grid .card{border-top:3px solid var(--slate)}
+.label{text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:var(--muted)}
+.kv{font-family:var(--serif);font-size:36px;line-height:1.15;margin-top:8px;font-variant-numeric:tabular-nums}
+.note{font-size:12px;color:var(--muted);margin-top:4px}
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--muted);margin:6px 0}
+.legend span::before{content:'';display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px;background:var(--sw)}
+.chart{position:relative;min-height:260px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.tip{position:absolute;pointer-events:none;background:#fff;border:1px solid var(--line);box-shadow:0 8px 24px rgba(31,52,64,.12);border-radius:8px;padding:6px 9px;font-size:12px;display:none;white-space:nowrap;z-index:5}
+.tablewrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:16px}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th{text-transform:uppercase;letter-spacing:.08em;font-size:11px;color:var(--muted);font-weight:500;text-align:right;padding:10px 12px;border-bottom:2px solid var(--slate);white-space:nowrap}
+td{text-align:right;padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+tbody tr:nth-child(even) td{background:#F5F7F8}
+tr.best td{background:rgba(46,139,87,.10)!important}
+tr.best td:first-child{border-left:3px solid var(--green);color:var(--green);font-weight:700}
+td.bestcell{color:var(--green);font-weight:700}
+.changes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.changes .card{border-left:3px solid var(--sand)}
+.pill{display:inline-block;border:1px solid var(--sand);padding:3px 10px;border-radius:999px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg)}
+.changes h4{font-family:var(--serif);font-weight:400;font-size:20px;margin:10px 0 6px}
+.changes p{margin:0;font-size:13px;color:var(--muted)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px}
+details{margin-top:48px;border-top:1px solid var(--line);padding-top:16px;font-size:12px;color:var(--muted)}
+summary{cursor:pointer;text-transform:uppercase;letter-spacing:.12em;font-size:11px}
+footer{margin-top:24px;font-size:12px;color:var(--muted)}
+@media (max-width:560px){.wrap{padding:16px 12px 48px}.hero{padding:22px 20px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero"><div class="rule"></div>
+    <h1>betterhomes Recruitment Campaign – Progress Dashboard</h1>
+    <p id="takeaway">Loading…</p>
+    <div class="asof" id="asof"></div>
+  </div>
+
+  <div class="grid" id="kpis"></div>
+
+  <h2>Where every applicant sits now</h2>
+  <p class="sub">Each person once, at their current stage, split by whether recruiters still have them open.</p>
+  <div class="legend"><span style="--sw:var(--slate)">Open</span><span style="--sw:var(--grey)">Closed</span></div>
+  <div class="chart" id="chart-stages"></div>
+
+  <h2>Applicants and qualified, week by week</h2>
+  <p class="sub">Weeks start Monday. Dashed lines mark the careers-page changes. The latest week is still in progress, and recent applicants may not be screened yet.</p>
+  <div class="legend"><span style="--sw:var(--slate)">Applicants</span><span style="--sw:var(--green)">Qualified or beyond</span></div>
+  <div class="chart" id="chart-weekly"></div>
+  <h3>Paid spend per week by channel (in AED)</h3>
+  <div class="legend"><span style="--sw:var(--slate)">Meta</span><span style="--sw:var(--sand)">Google Ads</span><span style="--sw:var(--powder)">LinkedIn</span></div>
+  <div class="chart" id="chart-spend"></div>
+
+  <h2>Which sources bring qualified people and hires</h2>
+  <p class="sub">Source as tagged on the application. Untagged applicants have no source in the sheet.</p>
+  <div class="tablewrap"><table><thead><tr><th>Source</th><th>Applicants</th><th>Qualified or beyond</th><th>Qualification rate</th><th>Reached interview</th><th>Hired</th><th>Spend</th><th>Cost per qualified</th></tr></thead><tbody id="t-sources"></tbody></table></div>
+
+  <h2>Creative pillars (Meta ads)</h2>
+  <p class="sub">Spend on each pillar's ads across all campaigns, joined to the applicants those ads brought. Meta applicants with no ad tag are shown separately.</p>
+  <div class="tablewrap"><table><thead><tr><th>Pillar</th><th>Live (weeks starting)</th><th>Spend</th><th>Applicants</th><th>Qualified or beyond</th><th>Qualification rate</th><th>Cost per qualified</th><th>Reached interview</th><th>Hired</th></tr></thead><tbody id="t-pillars"></tbody></table></div>
+  <p class="note">Green row = best performer: the lowest cost per qualified candidate. Green figures = the best in that column. Only pillars with spend and at least 5 qualified candidates are compared.</p>
+
+  <h2>Careers page changes (CRO) and their impact</h2>
+  <div class="changes">
+    <div class="card"><span class="pill">22 Oct 2026</span><h4>“You’re not the problem, your tools are” section</h4><p>New hero section on /en/join-our-team, launched with the Tools ads. It replaced “The next step in your career”.</p></div>
+    <div class="card"><span class="pill">4 Nov 2026</span><h4>Sticky “Apply in 1 min” button and new step-by-step form</h4><p>The button opens the new form (Continue, pick a role, upload CV). “Apply now” buttons still open the old one-step form. The new form does not yet send a submit event to PostHog or Meta.</p></div>
+  </div>
+  <h3>Before and after each change (leads sheet)</h3>
+  <div class="tablewrap"><table><thead><tr><th>Period</th><th>Dates</th><th>Applicants</th><th>Applicants a day</th><th>Qualified or beyond</th><th>Qualified a day</th><th>Qualification rate</th><th>Still open</th></tr></thead><tbody id="t-periods"></tbody></table></div>
+  <p class="note">The latest period's qualified figures will rise as recruiters screen the open applicants.</p>
+  <div class="two">
+    <div><h3>Applications in the sheet vs submissions PostHog recorded</h3>
+      <div class="legend"><span style="--sw:var(--slate)">Applications in the leads sheet</span><span style="--sw:var(--sand)">Submissions PostHog recorded</span></div>
+      <div class="chart" id="chart-tracking"></div>
+      <p class="note">PostHog submissions = the lead event, plus (on the new form) anyone who clicked Apply now after choosing a CV file. Red means under 75% of the sheet.</p></div>
+    <div><h3>New form: how far people get (since 4 Nov)</h3>
+      <div class="chart" id="chart-funnel"></div>
+      <p class="note">The new form sends no submit event yet, so a submission here is anyone who clicked the final Apply now after choosing a CV file.</p></div>
+  </div>
+
+  <details><summary>How these numbers are counted</summary><ul>
+    <li>Applicants are unique people from the Leads tab of the Recruitment Campaign Leads 2026 sheet, matched by email (then phone). Repeat applications count once, at the furthest stage reached. No names, emails or phone numbers are published on this page.</li>
+    <li>Qualified or beyond = Qualified + Interview + Offered + Hired, open or closed. Reached interview = Interview + Offered + Hired.</li>
+    <li>Weekly charts and the before/after table use the application date, which the sheet records from 30 Sep 2026 onwards.</li>
+    <li>Paid spend counts from 1 Aug 2026: Meta (recruitment ad account), Google Ads (Betterhomes account, campaigns with career or recruit in the name) and LinkedIn Ads (campaign group Bh-Recruitment-Traffic-LPV-UAE-Aug-2026, USD converted at 3.6725).</li>
+    <li>Cost per qualified (paid ads) divides all paid spend by qualified applicants tagged as Meta ads, Google ads or LinkedIn.</li>
+  </ul></details>
+  <footer>Data refreshes twice a day from the leads sheet, Meta, Google Ads, LinkedIn (Supermetrics) and PostHog.</footer>
+</div>
+<script>
+const C = {slate: '#1F343F', sand: '#D9B9A0', powder: '#7BA0B2', green: '#2E8B57', grey: '#C9CFD3', bad: '#C0392F', fg: '#1F343F', muted: '#586E78', line: '#DADADA'};
+const int = d3.format(','), pct = d3.format('.1%'), dec1 = d3.format('.1f'), aed = (v) => v == null ? '' : 'AED ' + int(v);
+const MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const wk = (iso) => { const d = new Date(iso + 'T00:00:00Z'); return d.getUTCDate() + ' ' + MON[d.getUTCMonth()]; };
+const CHANGES = [{date: '2026-10-22', label: 'Tools section 22 Oct'}, {date: '2026-11-04', label: 'Apply in 1 min + new form 4 Nov'}];
+let DATA = null;
+function el(tag, attrs, text) { const e = document.createElement(tag); Object.entries(attrs || {}).forEach(([k, v]) => e.setAttribute(k, v)); if (text != null) e.textContent = text; return e; }
+function tip(box) { const t = el('div', {class: 'tip'}); box.appendChild(t); return {show(ev, lines) { t.replaceChildren(...lines.filter(Boolean).map((l, i) => { const d = el('div', {}, l); if (!i) d.style.fontWeight = 600; return d; })); t.style.display = 'block'; const b = box.getBoundingClientRect(); let x = ev.clientX - b.left + 12; if (x + t.offsetWidth > b.width) x = ev.clientX - b.left - t.offsetWidth - 12; t.style.left = Math.max(0, x) + 'px'; t.style.top = (ev.clientY - b.top + 12) + 'px'; }, hide() { t.style.display = 'none'; }}; }
+function bars(box, rows, series, opts) {
+  box.replaceChildren(); const W = Math.max(300, box.clientWidth - 32), H = opts.height || 280, m = {t: 34, r: 6, b: opts.below ? 44 : 26, l: 6};
+  const svg = d3.select(box).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', opts.label);
+  const x0 = d3.scaleBand().domain(rows.map((r) => r.week)).range([m.l, W - m.r]).paddingInner(0.2).paddingOuter(0.05);
+  const x1 = d3.scaleBand().domain(series.map((s) => s.key)).range([0, x0.bandwidth()]).padding(0.08);
+  const max = d3.max(rows, (r) => d3.max(series, (s) => r[s.key] || 0)) || 1; const y = d3.scaleLinear().domain([0, max * 1.12]).range([H - m.b, m.t]); const t = tip(box);
+  (opts.markers || []).forEach((mk, i) => { const w = rows.map((r) => r.week).filter((x) => x <= mk.date).pop(); if (!w) return; const f = ((new Date(mk.date) - new Date(w)) / 864e5) / 7; const xx = x0(w) + x0.bandwidth() * Math.min(.95, Math.max(.05, f));
+    svg.append('line').attr('x1', xx).attr('x2', xx).attr('y1', 4 + i * 14).attr('y2', H - m.b).attr('stroke', C.muted).attr('stroke-dasharray', '4 3');
+    const tx = svg.append('text').attr('x', xx + 4).attr('y', 12 + i * 14).attr('fill', C.fg).attr('font-size', 11).attr('font-weight', 600).text(mk.label); if (xx + 4 + tx.node().getComputedTextLength() > W) tx.attr('x', xx - 4).attr('text-anchor', 'end'); });
+  rows.forEach((r) => series.forEach((s) => { const v = r[s.key] || 0, bx = x0(r.week) + x1(s.key);
+    svg.append('rect').attr('x', bx).attr('y', y(v)).attr('width', x1.bandwidth()).attr('height', Math.max(0, y(0) - y(v))).attr('rx', 2).attr('fill', s.color)
+      .on('mousemove', (ev) => t.show(ev, ['Week of ' + wk(r.week)].concat(series.map((z) => z.label + ': ' + (z.aed ? 'AED ' : '') + int(r[z.key] || 0))))).on('mouseleave', t.hide);
+    if (x1.bandwidth() >= 16) svg.append('text').attr('x', bx + x1.bandwidth() / 2).attr('y', y(v) - 4).attr('text-anchor', 'middle').attr('font-size', 10).attr('fill', C.fg).text(int(v)); }));
+  const every = Math.ceil(rows.length / Math.max(1, Math.floor(W / 64)));
+  rows.forEach((r, i) => { if (i % every) return; svg.append('text').attr('x', x0(r.week) + x0.bandwidth() / 2).attr('y', H - m.b + 15).attr('text-anchor', 'middle').attr('font-size', 11).attr('fill', C.muted).text(wk(r.week));
+    if (opts.below) { const b = opts.below(r); if (b) svg.append('text').attr('x', x0(r.week) + x0.bandwidth() / 2).attr('y', H - m.b + 30).attr('text-anchor', 'middle').attr('font-size', 11).attr('fill', b.color).text(b.text); } });
+  svg.append('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', y(0)).attr('y2', y(0)).attr('stroke', C.line);
+}
+function hbars(box, rows, opts) {
+  box.replaceChildren(); const W = Math.max(300, box.clientWidth - 32); const svg = d3.select(box).append('svg').attr('width', '100%').attr('role', 'img').attr('aria-label', opts.label); const t = tip(box);
+  if (opts.stacked) { const rowH = 30, lab = 90, H = rows.length * rowH + 10, max = d3.max(rows, (r) => r.total) || 1, x = d3.scaleLinear().domain([0, max]).range([0, W - lab - 120]); svg.attr('viewBox', `0 0 ${W} ${H}`);
+    rows.forEach((r, i) => { const yy = i * rowH + 4, show = (ev) => t.show(ev, [r.stage, 'Open: ' + int(r.open), 'Closed: ' + int(r.closed), 'Total: ' + int(r.total)]);
+      svg.append('text').attr('x', 0).attr('y', yy + 15).attr('font-size', 12).attr('fill', C.fg).text(r.stage);
+      svg.append('rect').attr('x', lab).attr('y', yy).attr('height', 20).attr('width', x(r.closed)).attr('fill', C.grey).on('mousemove', show).on('mouseleave', t.hide);
+      svg.append('rect').attr('x', lab + x(r.closed)).attr('y', yy).attr('height', 20).attr('width', x(r.open)).attr('fill', C.slate).on('mousemove', show).on('mouseleave', t.hide);
+      svg.append('text').attr('x', lab + x(r.total) + 6).attr('y', yy + 15).attr('font-size', 12).attr('fill', C.fg).text(int(r.total) + (r.open ? ' (' + int(r.open) + ' open)' : '')); }); return; }
+  const rowH = 40, H = rows.length * rowH + 6, base = rows[0] ? rows[0].people : 0, max = d3.max(rows, (r) => r.people) || 1, x = d3.scaleLinear().domain([0, max]).range([0, W - 110]); svg.attr('viewBox', `0 0 ${W} ${H}`);
+  rows.forEach((r, i) => { const yy = i * rowH, last = i === rows.length - 1;
+    svg.append('text').attr('x', 0).attr('y', yy + 12).attr('font-size', 12).attr('fill', C.fg).text(r.step);
+    svg.append('rect').attr('x', 0).attr('y', yy + 17).attr('height', 16).attr('rx', 2).attr('width', Math.max(2, x(r.people))).attr('fill', last ? C.green : C.slate)
+      .on('mousemove', (ev) => t.show(ev, [r.step, int(r.people) + ' people', base ? Math.round(r.people / base * 100) + '% of those who clicked' : ''])).on('mouseleave', t.hide);
+    svg.append('text').attr('x', Math.max(2, x(r.people)) + 6).attr('y', yy + 30).attr('font-size', 12).attr('fill', C.fg).text(int(r.people) + (base && i ? '  (' + Math.round(r.people / base * 100) + '%)' : '')); });
+}
+function table(id, rows, cells, decorate) { const tb = document.getElementById(id); tb.replaceChildren(); rows.forEach((r, i) => { const tr = el('tr'); cells(r).forEach((v) => tr.appendChild(el('td', {}, v))); if (decorate) decorate(tr, r, i); tb.appendChild(tr); }); }
+function render() {
+  const d = DATA, k = d.kpis; if (!d) return;
+  const tk = document.getElementById('takeaway'); tk.replaceChildren();
+  const B = (t) => el('b', {}, t); tk.append(B(int(k.applications)), ' unique applicants so far. ', B(int(k.qualified_plus)), ' (' + pct(k.qual_rate) + ') reached Qualified or beyond, and ', B(int(k.hired)), ' have been hired. Paid recruitment ads have spent ', B(aed(k.paid_spend)), ' since 1 Aug: Meta ' + aed(k.meta_spend) + ', Google Ads ' + aed(k.google_spend) + ' and LinkedIn ' + aed(k.linkedin_spend) + '.');
+  document.getElementById('asof').textContent = 'Data as of ' + new Date(d.asof).toLocaleString('en-GB', {timeZone: 'Asia/Dubai', day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit'}) + ' (Dubai)';
+  const tiles = [['Applicants (unique people)', int(k.applications), 'All sources, since launch'], ['Qualified or beyond', int(k.qualified_plus), pct(k.qual_rate) + ' of applicants'], ['Reached interview', int(k.interview_plus), 'Interview, offered or hired'], ['Offered', int(k.offered_plus), 'Offered or hired'], ['Hired', int(k.hired), 'Open or closed'], ['Still open in pipeline', int(k.open_leads), 'Status is Open'], ['Paid ad spend, all channels', aed(k.paid_spend), 'Meta, Google Ads and LinkedIn, since 1 Aug'], ['Cost per qualified, paid ads', aed(k.cost_per_qualified_paid), 'Paid spend ÷ ' + int(k.paid_qualified) + ' qualified from paid ads']];
+  const g = document.getElementById('kpis'); g.replaceChildren(...tiles.map(([l, v, n]) => { const c = el('div', {class: 'card'}); c.append(el('div', {class: 'label'}, l), el('div', {class: 'kv'}, v), el('div', {class: 'note'}, n)); return c; }));
+  hbars(document.getElementById('chart-stages'), d.stages, {stacked: true, label: 'Applicants by current stage'});
+  const fa = d.weekly.findIndex((r) => r.applications > 0);
+  bars(document.getElementById('chart-weekly'), fa >= 0 ? d.weekly.slice(fa) : d.weekly, [{key: 'applications', label: 'Applicants', color: C.slate}, {key: 'qualified_plus', label: 'Qualified or beyond', color: C.green}], {label: 'Weekly applicants and qualified', markers: CHANGES, height: 300});
+  bars(document.getElementById('chart-spend'), d.weekly, [{key: 'meta_spend', label: 'Meta', color: C.slate, aed: true}, {key: 'google_spend', label: 'Google Ads', color: C.sand, aed: true}, {key: 'linkedin_spend', label: 'LinkedIn', color: C.powder, aed: true}], {label: 'Weekly paid spend by channel', height: 240});
+  table('t-sources', d.sources, (r) => [r.source, int(r.applications), int(r.qualified_plus), pct(r.qual_rate), int(r.interview_plus), int(r.hired), aed(r.spend), aed(r.cost_per_qualified)]);
+  const el5 = d.pillars.filter((r) => r.spend > 0 && r.qualified_plus >= 5);
+  const best = el5.length ? {cpq: el5.reduce((a, b) => b.cost_per_qualified < a.cost_per_qualified ? b : a), rate: el5.reduce((a, b) => b.qual_rate > a.qual_rate ? b : a), q: el5.reduce((a, b) => b.qualified_plus > a.qualified_plus ? b : a)} : {};
+  table('t-pillars', d.pillars, (r) => [r.pillar, r.live, aed(r.spend), int(r.applications), int(r.qualified_plus), r.qual_rate == null ? '' : pct(r.qual_rate), aed(r.cost_per_qualified), int(r.interview_plus), int(r.hired)],
+    (tr, r) => { if (r === best.cpq) tr.classList.add('best'); [[best.q, 4], [best.rate, 5], [best.cpq, 6]].forEach(([b, c]) => { if (r === b) tr.children[c].classList.add('bestcell'); }); });
+  table('t-periods', d.cro_periods, (r) => [r.period, r.dates, int(r.applications), dec1(r.apps_per_day), int(r.qualified_plus), dec1(r.qualified_per_day), pct(r.qual_rate), int(r.still_open)]);
+  bars(document.getElementById('chart-tracking'), d.cro_weekly, [{key: 'sheet_applications', label: 'Applications in sheet', color: C.slate}, {key: 'tracked_submissions', label: 'Submissions PostHog recorded', color: C.sand}], {label: 'Sheet applications vs PostHog submissions', markers: [CHANGES[1]], height: 300, below: (r) => r.tracked_share == null ? null : {text: Math.round(r.tracked_share * 100) + '% tracked', color: r.tracked_share < .75 ? C.bad : C.muted}});
+  hbars(document.getElementById('chart-funnel'), d.form_funnel, {label: 'New form steps'});
+}
+fetch('data.json', {cache: 'no-store'}).then((r) => r.json()).then((d) => { DATA = d; render(); }).catch(() => { document.getElementById('takeaway').textContent = 'Could not load the data. Please refresh.'; });
+let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(render, 150); });
+</script>
+</body>
+</html>

@@ -1,0 +1,456 @@
+{
+ "asof": "2026-11-18T09:57:57.882Z",
+ "kpis": {
+  "applications": 1870,
+  "qualified_plus": 245,
+  "qual_rate": 0.13101604278074866,
+  "interview_plus": 75,
+  "offered_plus": 41,
+  "hired": 19,
+  "open_leads": 49,
+  "meta_spend": 27650,
+  "google_spend": 5004,
+  "linkedin_spend": 599,
+  "paid_spend": 33253,
+  "paid_qualified": 105,
+  "cost_per_qualified_paid": 317
+ },
+ "stages": [
+  {
+   "stage": "Rejected",
+   "open": 0,
+   "closed": 1600,
+   "total": 1600
+  },
+  {
+   "stage": "Qualified",
+   "open": 33,
+   "closed": 137,
+   "total": 170
+  },
+  {
+   "stage": "Interview",
+   "open": 8,
+   "closed": 26,
+   "total": 34
+  },
+  {
+   "stage": "Offered",
+   "open": 8,
+   "closed": 14,
+   "total": 22
+  },
+  {
+   "stage": "Hired",
+   "open": 0,
+   "closed": 19,
+   "total": 19
+  },
+  {
+   "stage": "Not set",
+   "open": 0,
+   "closed": 25,
+   "total": 25
+  }
+ ],
+ "weekly": [
+  {
+   "week": "2026-07-27",
+   "applications": 0,
+   "qualified_plus": 0,
+   "meta_spend": 0,
+   "google_spend": 105,
+   "linkedin_spend": 0
+  },
+  {
+   "week": "2026-08-03",
+   "applications": 0,
+   "qualified_plus": 0,
+   "meta_spend": 1053,
+   "google_spend": 493,
+   "linkedin_spend": 128
+  },
+  {
+   "week": "2026-08-10",
+   "applications": 0,
+   "qualified_plus": 0,
+   "meta_spend": 1402,
+   "google_spend": 817,
+   "linkedin_spend": 337
+  },
+  {
+   "week": "2026-08-17",
+   "applications": 0,
+   "qualified_plus": 0,
+   "meta_spend": 1678,
+   "google_spend": 372,
+   "linkedin_spend": 134
+  },
+  {
+   "week": "2026-08-24",
+   "applications": 0,
+   "qualified_plus": 0,
+   "meta_spend": 1167,
+   "google_spend": 210,
+   "linkedin_spend": 0
+  },
+  {
+   "week": "2026-08-31",
+   "applications": 0,
+   "qualified_plus": 0,
+   "meta_spend": 2044,
+   "google_spend": 224,
+   "linkedin_spend": 0
+  },
+  {
+   "week": "2026-09-07",
+   "applications": 0,
+   "qualified_plus": 0,
+   "meta_spend": 2002,
+   "google_spend": 237,
+   "linkedin_spend": 0
+  },
+  {
+   "week": "2026-09-14",
+   "applications": 0,
+   "qualified_plus": 0,
+   "meta_spend": 2306,
+   "google_spend": 362,
+   "linkedin_spend": 0
+  },
+  {
+   "week": "2026-09-21",
+   "applications": 0,
+   "qualified_plus": 0,
+   "meta_spend": 2247,
+   "google_spend": 241,
+   "linkedin_spend": 0
+  },
+  {
+   "week": "2026-09-28",
+   "applications": 102,
+   "qualified_plus": 14,
+   "meta_spend": 1516,
+   "google_spend": 251,
+   "linkedin_spend": 0
+  },
+  {
+   "week": "2026-10-05",
+   "applications": 190,
+   "qualified_plus": 35,
+   "meta_spend": 1891,
+   "google_spend": 469,
+   "linkedin_spend": 0
+  },
+  {
+   "week": "2026-10-12",
+   "applications": 167,
+   "qualified_plus": 17,
+   "meta_spend": 1778,
+   "google_spend": 284,
+   "linkedin_spend": 0
+  },
+  {
+   "week": "2026-10-19",
+   "applications": 127,
+   "qualified_plus": 17,
+   "meta_spend": 1841,
+   "google_spend": 218,
+   "linkedin_spend": 0
+  },
+  {
+   "week": "2026-10-26",
+   "applications": 124,
+   "qualified_plus": 25,
+   "meta_spend": 1931,
+   "google_spend": 202,
+   "linkedin_spend": 0
+  },
+  {
+   "week": "2026-11-02",
+   "applications": 123,
+   "qualified_plus": 17,
+   "meta_spend": 2064,
+   "google_spend": 212,
+   "linkedin_spend": 0
+  },
+  {
+   "week": "2026-11-09",
+   "applications": 143,
+   "qualified_plus": 37,
+   "meta_spend": 2169,
+   "google_spend": 233,
+   "linkedin_spend": 0
+  },
+  {
+   "week": "2026-11-16",
+   "applications": 67,
+   "qualified_plus": 6,
+   "meta_spend": 563,
+   "google_spend": 77,
+   "linkedin_spend": 0
+  }
+ ],
+ "sources": [
+  {
+   "source": "Untagged (organic, direct, referral)",
+   "applications": 956,
+   "qualified_plus": 122,
+   "interview_plus": 47,
+   "hired": 12,
+   "qual_rate": 0.12761506276150628,
+   "spend": null,
+   "cost_per_qualified": null
+  },
+  {
+   "source": "Meta ads",
+   "applications": 658,
+   "qualified_plus": 100,
+   "interview_plus": 19,
+   "hired": 3,
+   "qual_rate": 0.1519756838905775,
+   "spend": 27650,
+   "cost_per_qualified": 277
+  },
+  {
+   "source": "AI search (ChatGPT, Gemini)",
+   "applications": 178,
+   "qualified_plus": 18,
+   "interview_plus": 8,
+   "hired": 4,
+   "qual_rate": 0.10112359550561797,
+   "spend": null,
+   "cost_per_qualified": null
+  },
+  {
+   "source": "Google ads",
+   "applications": 58,
+   "qualified_plus": 5,
+   "interview_plus": 1,
+   "hired": 0,
+   "qual_rate": 0.08620689655172414,
+   "spend": 5004,
+   "cost_per_qualified": 1001
+  },
+  {
+   "source": "LinkedIn",
+   "applications": 17,
+   "qualified_plus": 0,
+   "interview_plus": 0,
+   "hired": 0,
+   "qual_rate": 0,
+   "spend": 599,
+   "cost_per_qualified": null
+  },
+  {
+   "source": "Other tagged",
+   "applications": 3,
+   "qualified_plus": 0,
+   "interview_plus": 0,
+   "hired": 0,
+   "qual_rate": 0,
+   "spend": null,
+   "cost_per_qualified": null
+  }
+ ],
+ "pillars": [
+  {
+   "pillar": "Halloween",
+   "live": "26 Oct – 26 Oct",
+   "first": "2026-10-26",
+   "spend": 95,
+   "applications": 0,
+   "qualified_plus": 0,
+   "qual_rate": null,
+   "cost_per_qualified": null,
+   "interview_plus": 0,
+   "hired": 0
+  },
+  {
+   "pillar": "Tools",
+   "live": "19 Oct – 16 Nov",
+   "first": "2026-10-19",
+   "spend": 5479,
+   "applications": 127,
+   "qualified_plus": 34,
+   "qual_rate": 0.2677165354330709,
+   "cost_per_qualified": 161,
+   "interview_plus": 4,
+   "hired": 0
+  },
+  {
+   "pillar": "Next Step",
+   "live": "21 Sep – 19 Oct",
+   "first": "2026-09-21",
+   "spend": 6940,
+   "applications": 277,
+   "qualified_plus": 36,
+   "qual_rate": 0.1299638989169675,
+   "cost_per_qualified": 193,
+   "interview_plus": 4,
+   "hired": 0
+  },
+  {
+   "pillar": "People videos",
+   "live": "24 Aug – 16 Nov",
+   "first": "2026-08-24",
+   "spend": 3130,
+   "applications": 76,
+   "qualified_plus": 9,
+   "qual_rate": 0.11842105263157894,
+   "cost_per_qualified": 348,
+   "interview_plus": 1,
+   "hired": 0
+  },
+  {
+   "pillar": "Bigger Pitch",
+   "live": "17 Aug – 21 Sep",
+   "first": "2026-08-17",
+   "spend": 2191,
+   "applications": 21,
+   "qualified_plus": 1,
+   "qual_rate": 0.047619047619047616,
+   "cost_per_qualified": 2191,
+   "interview_plus": 1,
+   "hired": 0
+  },
+  {
+   "pillar": "Box",
+   "live": "3 Aug – 17 Aug",
+   "first": "2026-08-03",
+   "spend": 2705,
+   "applications": 55,
+   "qualified_plus": 1,
+   "qual_rate": 0.01818181818181818,
+   "cost_per_qualified": 2705,
+   "interview_plus": 1,
+   "hired": 0
+  },
+  {
+   "pillar": "Hero video",
+   "live": "3 Aug – 16 Nov",
+   "first": "2026-08-03",
+   "spend": 7111,
+   "applications": 38,
+   "qualified_plus": 3,
+   "qual_rate": 0.07894736842105263,
+   "cost_per_qualified": 2370,
+   "interview_plus": 1,
+   "hired": 1
+  },
+  {
+   "pillar": "Meta, ad not tagged",
+   "live": "No ad tag",
+   "first": "",
+   "spend": 0,
+   "applications": 64,
+   "qualified_plus": 16,
+   "qual_rate": 0.25,
+   "cost_per_qualified": null,
+   "interview_plus": 7,
+   "hired": 2
+  }
+ ],
+ "cro_periods": [
+  {
+   "period": "Next Step section, old form",
+   "dates": "30 Sep – 21 Oct",
+   "applications": 525,
+   "apps_per_day": 23.863636363636363,
+   "qualified_plus": 73,
+   "qualified_per_day": 3.3181818181818183,
+   "qual_rate": 0.13904761904761906,
+   "still_open": 6
+  },
+  {
+   "period": "Tools section, old form",
+   "dates": "22 Oct – 3 Nov",
+   "applications": 229,
+   "apps_per_day": 17.615384615384617,
+   "qualified_plus": 40,
+   "qualified_per_day": 3.076923076923077,
+   "qual_rate": 0.17467248908296942,
+   "still_open": 3
+  },
+  {
+   "period": "Tools section + Apply in 1 min + new form",
+   "dates": "4 Nov – 18 Nov",
+   "applications": 289,
+   "apps_per_day": 19.266666666666666,
+   "qualified_plus": 55,
+   "qualified_per_day": 3.6666666666666665,
+   "qual_rate": 0.1903114186851211,
+   "still_open": 38
+  }
+ ],
+ "cro_weekly": [
+  {
+   "week": "2026-10-05",
+   "sheet_applications": 214,
+   "tracked_submissions": 181,
+   "tracked_share": 0.8457943925233645
+  },
+  {
+   "week": "2026-10-12",
+   "sheet_applications": 186,
+   "tracked_submissions": 160,
+   "tracked_share": 0.8602150537634409
+  },
+  {
+   "week": "2026-10-19",
+   "sheet_applications": 138,
+   "tracked_submissions": 110,
+   "tracked_share": 0.7971014492753623
+  },
+  {
+   "week": "2026-10-26",
+   "sheet_applications": 130,
+   "tracked_submissions": 122,
+   "tracked_share": 0.9384615384615385
+  },
+  {
+   "week": "2026-11-02",
+   "sheet_applications": 129,
+   "tracked_submissions": 126,
+   "tracked_share": 0.9767441860465116
+  },
+  {
+   "week": "2026-11-09",
+   "sheet_applications": 163,
+   "tracked_submissions": 148,
+   "tracked_share": 0.9079754601226994
+  },
+  {
+   "week": "2026-11-16",
+   "sheet_applications": 79,
+   "tracked_submissions": 66,
+   "tracked_share": 0.8354430379746836
+  }
+ ],
+ "form_funnel": [
+  {
+   "step": "Clicked Apply in 1 min",
+   "people": 222
+  },
+  {
+   "step": "Opened the new form",
+   "people": 226
+  },
+  {
+   "step": "Pressed Continue",
+   "people": 214
+  },
+  {
+   "step": "Picked a role",
+   "people": 197
+  },
+  {
+   "step": "Chose a CV file",
+   "people": 149
+  },
+  {
+   "step": "Submitted (clicked Apply now after the CV)",
+   "people": 137
+  }
+ ]
+}
