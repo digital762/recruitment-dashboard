@@ -24,11 +24,11 @@ h2{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.2;margi
 h2::after{content:'';display:block;width:44px;height:2px;background:var(--sand);margin-top:10px}
 h3{font-family:var(--serif);font-weight:400;font-size:21px;margin:28px 0 6px}
 .sub{color:var(--muted);margin:0 0 14px;max-width:72ch}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:14px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 2px 8px rgba(31,52,64,.05)}
 .grid .card{border-top:3px solid var(--slate)}
 .label{text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:var(--muted)}
-.kv{font-family:var(--serif);font-size:36px;line-height:1.15;margin-top:8px;font-variant-numeric:tabular-nums}
+.kv{font-family:var(--serif);font-size:clamp(26px,2.6vw,36px);line-height:1.15;margin-top:8px;font-variant-numeric:tabular-nums;white-space:nowrap}
 .note{font-size:12px;color:var(--muted);margin-top:4px}
 .legend{display:flex;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--muted);margin:6px 0}
 .legend span::before{content:'';display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px;background:var(--sw)}
