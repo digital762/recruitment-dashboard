@@ -1,19 +1,19 @@
 {
- "asof": "2026-11-18T12:17:08.304Z",
+ "asof": "2026-11-19T04:23:10.810Z",
  "kpis": {
-  "applications": 1870,
+  "applications": 1884,
   "qualified_plus": 245,
-  "qual_rate": 0.13101604278074866,
+  "qual_rate": 0.13004246284501061,
   "interview_plus": 75,
   "offered_plus": 41,
   "hired": 19,
   "open_leads": 49,
-  "meta_spend": 27650,
-  "google_spend": 5004,
+  "meta_spend": 28138,
+  "google_spend": 5025,
   "linkedin_spend": 599,
-  "paid_spend": 33253,
+  "paid_spend": 33762,
   "paid_qualified": 105,
-  "cost_per_qualified_paid": 317
+  "cost_per_qualified_paid": 322
  },
  "stages": [
   {
@@ -49,8 +49,8 @@
   {
    "stage": "Not set",
    "open": 0,
-   "closed": 25,
-   "total": 25
+   "closed": 39,
+   "total": 39
   }
  ],
  "weekly": [
@@ -184,41 +184,41 @@
   },
   {
    "week": "2026-11-16",
-   "applications": 67,
+   "applications": 82,
    "qualified_plus": 6,
-   "meta_spend": 563,
-   "google_spend": 77,
+   "meta_spend": 1051,
+   "google_spend": 97,
    "linkedin_spend": 0
   }
  ],
  "sources": [
   {
    "source": "Untagged (organic, direct, referral)",
-   "applications": 956,
+   "applications": 966,
    "qualified_plus": 122,
    "interview_plus": 47,
    "hired": 12,
-   "qual_rate": 0.12761506276150628,
+   "qual_rate": 0.12629399585921325,
    "spend": null,
    "cost_per_qualified": null
   },
   {
    "source": "Meta ads",
-   "applications": 658,
+   "applications": 661,
    "qualified_plus": 100,
    "interview_plus": 19,
    "hired": 3,
-   "qual_rate": 0.1519756838905775,
-   "spend": 27650,
-   "cost_per_qualified": 277
+   "qual_rate": 0.15128593040847202,
+   "spend": 28138,
+   "cost_per_qualified": 281
   },
   {
    "source": "AI search (ChatGPT, Gemini)",
-   "applications": 178,
+   "applications": 179,
    "qualified_plus": 18,
    "interview_plus": 8,
    "hired": 4,
-   "qual_rate": 0.10112359550561797,
+   "qual_rate": 0.1005586592178771,
    "spend": null,
    "cost_per_qualified": null
   },
@@ -229,8 +229,8 @@
    "interview_plus": 1,
    "hired": 0,
    "qual_rate": 0.08620689655172414,
-   "spend": 5004,
-   "cost_per_qualified": 1001
+   "spend": 5025,
+   "cost_per_qualified": 1005
   },
   {
    "source": "LinkedIn",
@@ -270,11 +270,11 @@
    "pillar": "Tools",
    "live": "19 Oct – 16 Nov",
    "first": "2026-10-19",
-   "spend": 5479,
-   "applications": 127,
+   "spend": 5828,
+   "applications": 129,
    "qualified_plus": 34,
-   "qual_rate": 0.2677165354330709,
-   "cost_per_qualified": 161,
+   "qual_rate": 0.26356589147286824,
+   "cost_per_qualified": 171,
    "interview_plus": 4,
    "hired": 0
   },
@@ -294,11 +294,11 @@
    "pillar": "People videos",
    "live": "24 Aug – 16 Nov",
    "first": "2026-08-24",
-   "spend": 3130,
-   "applications": 76,
+   "spend": 3152,
+   "applications": 77,
    "qualified_plus": 9,
-   "qual_rate": 0.11842105263157894,
-   "cost_per_qualified": 348,
+   "qual_rate": 0.11688311688311688,
+   "cost_per_qualified": 350,
    "interview_plus": 1,
    "hired": 0
   },
@@ -330,11 +330,11 @@
    "pillar": "Hero video",
    "live": "3 Aug – 16 Nov",
    "first": "2026-08-03",
-   "spend": 7111,
+   "spend": 7228,
    "applications": 38,
    "qualified_plus": 3,
    "qual_rate": 0.07894736842105263,
-   "cost_per_qualified": 2370,
+   "cost_per_qualified": 2409,
    "interview_plus": 1,
    "hired": 1
   },
@@ -374,12 +374,12 @@
   },
   {
    "period": "Tools section + Apply in 1 min + new form",
-   "dates": "4 Nov – 18 Nov",
-   "applications": 289,
-   "apps_per_day": 19.266666666666666,
+   "dates": "4 Nov – 19 Nov",
+   "applications": 304,
+   "apps_per_day": 19,
    "qualified_plus": 55,
-   "qualified_per_day": 3.6666666666666665,
-   "qual_rate": 0.1903114186851211,
+   "qualified_per_day": 3.4375,
+   "qual_rate": 0.18092105263157895,
    "still_open": 38
   }
  ],
@@ -422,39 +422,39 @@
   },
   {
    "week": "2026-11-16",
-   "sheet_applications": 79,
-   "tracked_submissions": 66,
-   "tracked_share": 0.8354430379746836
+   "sheet_applications": 94,
+   "tracked_submissions": 80,
+   "tracked_share": 0.851063829787234
   }
  ],
  "form_funnel": [
   {
    "step": "Clicked Apply in 1 min",
-   "people": 224
+   "people": 236
   },
   {
    "step": "Opened the new form",
-   "people": 224
+   "people": 236
   },
   {
    "step": "Pressed Continue",
-   "people": 171
+   "people": 178
   },
   {
    "step": "Picked a role",
-   "people": 165
+   "people": 172
   },
   {
    "step": "Chose a CV file",
-   "people": 115
+   "people": 121
   },
   {
    "step": "Submitted (clicked Apply now after the CV)",
-   "people": 106
+   "people": 111
   },
   {
    "step": "Old form: submissions PostHog recorded",
-   "people": 158,
+   "people": 162,
    "group": "old"
   },
   {
